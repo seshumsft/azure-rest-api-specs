@@ -173,41 +173,42 @@
     "EmployeeProperties": {
       "type": "object",
       "description": "Employee details",
-      "properties": {
-        "firstName": {
-          "type": "string",
-          "description": "Employee full name."
-        },
-        "middleName": {
-          "type": "string",
-          "description": "Employee full name."
-        },
-        "lastName": {
-          "type": "string",
-          "description": "Employee full name."
-        },
-        "group": {
-          "type": "string",
-          "description": "group like Finance, HR etc..."
-        },
-		"id": {
-          "type": "string",
-          "readOnly": true,
-          "description": "unique id assigned at the time of user creation"
-        },
-        "likesTea": {
-          "type": "string",
-          "description": "Gets or sets the deployment mode.",
-          "enum": [
-            "Yes",
-            "No"
-          ],
-          "x-ms-enum": {
-            "name": "likesTea",
-            "modelAsString": true
-          }
-        }
-      },
+	  "properties": {
+		  "properties": {
+			"firstName": {
+			  "type": "string",
+			  "description": "Employee full name."
+			},
+			"middleName": {
+			  "type": "string",
+			  "description": "Employee middle name."
+			},
+			"lastName": {
+			  "type": "string",
+			  "description": "Employee last name."
+			},
+			"group": {
+			  "type": "string",
+			  "description": "group like Finance, HR etc..."
+			},
+			"id": {
+			  "type": "string",
+			  "readOnly": true,
+			  "description": "unique id assigned at the time of user creation"
+			},
+			"likesTea": {
+			  "type": "string",
+			  "description": "Gets or sets the deployment mode.",
+			  "enum": [
+				"Yes"
+			  ],
+			  "x-ms-enum": {
+				"name": "likesTea",
+				"modelAsString": true
+			  }
+			}
+		  }
+	  },
 	  "required": [
         "firstName",
 		"lastName",
