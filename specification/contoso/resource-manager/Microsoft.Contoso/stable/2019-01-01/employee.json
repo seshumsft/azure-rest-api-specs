@@ -173,6 +173,11 @@
     "EmployeeProperties": {
       "type": "object",
       "description": "Employee details",
+	   "allOf": [
+        {
+          "$ref": "#/definitions/TrackedResource"
+        }
+      ],
 	  "properties": {
 		  "properties": {
 			"firstName": {
