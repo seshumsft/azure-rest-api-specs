@@ -37,7 +37,7 @@
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.contoso/employees/{employeeName}": {
       "get": {
         "description": "Returns employee resource for a given name.",
-        "operationId": "Employees_Get",
+        "operationId": "Employee_Get",
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -56,7 +56,7 @@
           "200": {
             "description": "Employee details.",
             "schema": {
-              "$ref": "#/definitions/EmployeeDetails"
+              "$ref": "#/definitions/EmployeeProperties"
             }
           }
         },
@@ -68,7 +68,7 @@
       },
       "put": {
         "description": "Create or update employee resource.",
-        "operationId": "Employees_CreateAndUpdate",
+        "operationId": "Employee_CreateAndUpdate",
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -84,31 +84,31 @@
           },
           {
             "name": "EmployeeProperties",
-            "description": "Properties that need to be specified to update current pricing plan for an Application Insights component.",
+            "description": "Employee details.",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ApplicationInsightsComponentPricingPlan"
+              "$ref": "#/definitions/EmployeeProperties"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful request when updating billing features for an Application Insights component. The updated current billing features are returned.",
+            "description": "Successful.",
             "schema": {
-              "$ref": "#/definitions/ApplicationInsightsComponentPricingPlan"
+              "$ref": "#/definitions/EmployeeProperties"
             }
           }
         },
         "x-ms-examples": {
-          "ComponentCurrentPricingPlanUpdate": {
-            "$ref": "./examples/CurrentPricingPlanCreateAndUpdate.json"
+          "EmployeePropertiesUpdate": {
+            "$ref": "./examples/EmployeePropertiesUpdate.json"
           }
         }
       },
       "patch": {
-        "description": "Update current pricing plan for an Application Insights component.",
-        "operationId": "ComponentCurrentPricingPlan_Update",
+        "description": "Update employee details.",
+        "operationId": "Employees_Update",
         "parameters": [
           {
             "$ref": "#/parameters/ResourceGroupNameParameter"
@@ -124,25 +124,25 @@
           },
           {
             "name": "EmployeeProperties",
-            "description": "Properties that need to be specified to update current pricing plan for an Application Insights component.",
+            "description": "Employee details.",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ApplicationInsightsComponentPricingPlan"
+              "$ref": "#/definitions/EmployeeProperties"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Successful request when updating billing features for an Application Insights component. The updated current billing features are returned.",
+            "description": "Successful.",
             "schema": {
-              "$ref": "#/definitions/ApplicationInsightsComponentPricingPlan"
+              "$ref": "#/definitions/EmployeeProperties"
             }
           }
         },
         "x-ms-examples": {
-          "ComponentCurrentPricingPlanUpdate": {
-            "$ref": "./examples/CurrentPricingPlanUpdate.json"
+          "EmployeePropertiesUpdate": {
+            "$ref": "./examples/EmployeePropertiesUpdate.json"
           }
         }
       }
@@ -170,59 +170,50 @@
       },
       "x-ms-azure-resource": true
     },
-    "ApplicationInsightsComponentPricingPlan": {
-      "description": "An Application Insights component pricing plan",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/Resource"
-        }
-      ],
-      "properties": {
-        "properties": {
-          "$ref": "#/definitions/EmployeeProperties",
-          "description": "The properties of the suppression.",
-          "x-ms-client-flatten": true
-        }
-      }
-    },
     "EmployeeProperties": {
       "type": "object",
-      "description": "An Application Insights component daily data volume cap",
+      "description": "Employee details",
       "properties": {
-        "fullname": {
+        "firstName": {
           "type": "string",
           "description": "Employee full name."
         },
-        "city": {
+        "middleName": {
           "type": "string",
-          "description": "city."
+          "description": "Employee full name."
         },
-        "organization": {
+        "lastName": {
+          "type": "string",
+          "description": "Employee full name."
+        },
+        "group": {
+          "type": "string",
+          "description": "group like Finance, HR etc..."
+        },
+		"id": {
           "type": "string",
           "readOnly": true,
-          "description": "org like ARM, Cosine, Bing, Office etc..."
+          "description": "unique id assigned at the time of user creation"
         },
-        "building": {
-          "type": "integer",
-          "description": "building number like 41."
-        },
-        "transportation": {
+        "likesTea": {
           "type": "string",
           "description": "Gets or sets the deployment mode.",
           "enum": [
-            "CarPool",
-            "PublicTransport",
-			"Personal",
-			"Bike",
-			"Walk"
+            "Yes",
+            "No"
           ],
           "x-ms-enum": {
-            "name": "transportation",
-            "modelAsString": false
+            "name": "likesTea",
+            "modelAsString": true
           }
         }
-      }
+      },
+	  "required": [
+        "firstName",
+		"lastName",
+		"group",
+		"likesTea"
+      ]
     }
   },
   "parameters": {
