@@ -191,7 +191,7 @@
 			  "type": "string",
 			  "description": "group like Finance, HR etc..."
 			},
-			"id": {
+			"identificationNumber": {
 			  "type": "string",
 			  "readOnly": true,
 			  "description": "unique id assigned at the time of user creation"
