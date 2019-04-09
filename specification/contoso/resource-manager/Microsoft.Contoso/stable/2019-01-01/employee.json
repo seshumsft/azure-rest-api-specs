@@ -212,14 +212,17 @@
 				"modelAsString": true
 			  }
 			}
-		  }
+		  },
+		  "required": [
+			"firstName",
+			"lastName",
+			"group",
+			"likesTea"
+		  ]
 	  },
-	  "required": [
-        "firstName",
-		"lastName",
-		"group",
-		"likesTea"
-      ]
+	   "required": [
+			"properties"
+		  ]
     }
   },
   "parameters": {
