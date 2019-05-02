@@ -183,60 +183,54 @@
 		"x-ms-azure-resource": true
 		}
 	},
-    "EmployeeProperties": {
-      "type": "object",
-      "description": "Employee details",
-	   "allOf": [
-        {
-          "$ref": "#/definitions/Resource"
+  "EmployeeProperties": {
+    "type": "object",
+    "description": "Employee details",
+    "allOf": [
+      {
+        "$ref": "#/definitions/Resource"
+      }
+    ],
+    "required": ["properties"],
+    "properties": {
+      "properties": {
+        "type": "object",
+        "required": ["firstName", "lastName", "group", "likesTea"],
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "description": "Employee full name."
+          },
+          "middleName": {
+            "type": "string",
+            "description": "Employee middle name."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Employee last name."
+          },
+          "group": {
+            "type": "string",
+            "description": "group like Finance, HR etc..."
+          },
+          "identificationNumber": {
+            "type": "string",
+            "readOnly": true,
+            "description": "unique id assigned at the time of user creation"
+          },
+          "likesTea": {
+            "type": "string",
+            "description": "Gets or sets the deployment mode.",
+            "enum": ["Yes"],
+            "x-ms-enum": {
+              "name": "likesTea",
+              "modelAsString": true
+            }
+          }
         }
-      ],
-	  "properties": {
-		  "properties": {
-			"firstName": {
-			  "type": "string",
-			  "description": "Employee full name."
-			},
-			"middleName": {
-			  "type": "string",
-			  "description": "Employee middle name."
-			},
-			"lastName": {
-			  "type": "string",
-			  "description": "Employee last name."
-			},
-			"group": {
-			  "type": "string",
-			  "description": "group like Finance, HR etc..."
-			},
-			"identificationNumber": {
-			  "type": "string",
-			  "readOnly": true,
-			  "description": "unique id assigned at the time of user creation"
-			},
-			"likesTea": {
-			  "type": "string",
-			  "description": "Gets or sets the deployment mode.",
-			  "enum": [
-				"Yes"
-			  ],
-			  "x-ms-enum": {
-				"name": "likesTea",
-				"modelAsString": true
-			  }
-			}
-		  },
-		  "required": [
-			"firstName",
-			"lastName",
-			"group",
-			"likesTea"
-		  ]
-	  },
-	   "required": [
-			"properties"
-		  ]
+      }
     }
+  }
   },
   "parameters": {
     "SubscriptionIdParameter": {
