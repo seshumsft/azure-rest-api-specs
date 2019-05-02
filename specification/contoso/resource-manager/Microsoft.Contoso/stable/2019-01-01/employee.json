@@ -180,8 +180,9 @@
               "type": "string"
         }
       },
-      "x-ms-azure-resource": true
-    },
+		"x-ms-azure-resource": true
+		}
+	},
     "EmployeeProperties": {
       "type": "object",
       "description": "Employee details",
