@@ -123,12 +123,12 @@
             "$ref": "#/parameters/EmployeeNameParameter"
           },
           {
-            "name": "EmployeeProperties",
-            "description": "Employee details.",
+            "name": "EmployeePatchProperties",
+            "description": "Employee patch details.",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/EmployeeProperties"
+              "$ref": "#/definitions/EmployeePatchProperties"
             }
           }
         ],
@@ -177,60 +177,83 @@
           "type": "object",
           "readOnly": false,
           "additionalProperties": {
-              "type": "string"
-        }
-      },
-		"x-ms-azure-resource": true
-		}
-	},
-  "EmployeeProperties": {
-    "type": "object",
-    "description": "Employee details",
-    "allOf": [
-      {
-        "$ref": "#/definitions/Resource"
+            "type": "string"
+          }
+        },
+        "x-ms-azure-resource": true
       }
-    ],
-    "required": ["properties"],
-    "properties": {
+    },
+    "EmployeeProperties": {
+      "type": "object",
+      "description": "Employee details",
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ],
+      "required": [ "properties" ],
       "properties": {
-        "type": "object",
-        "required": ["firstName", "lastName", "group", "likesTea"],
         "properties": {
-          "firstName": {
-            "type": "string",
-            "description": "Employee full name."
-          },
-          "middleName": {
-            "type": "string",
-            "description": "Employee middle name."
-          },
-          "lastName": {
-            "type": "string",
-            "description": "Employee last name."
-          },
-          "group": {
-            "type": "string",
-            "description": "group like Finance, HR etc..."
-          },
-          "identificationNumber": {
-            "type": "string",
-            "readOnly": true,
-            "description": "unique id assigned at the time of user creation"
-          },
-          "likesTea": {
-            "type": "string",
-            "description": "Gets or sets the deployment mode.",
-            "enum": ["Yes"],
-            "x-ms-enum": {
-              "name": "likesTea",
-              "modelAsString": true
+          "type": "object",
+          "required": [ "firstName", "lastName", "group", "likesTea" ],
+          "properties": {
+            "firstName": {
+              "type": "string",
+              "description": "Employee full name."
+            },
+            "middleName": {
+              "type": "string",
+              "description": "Employee middle name."
+            },
+            "lastName": {
+              "type": "string",
+              "description": "Employee last name."
+            },
+            "group": {
+              "type": "string",
+              "description": "group like Finance, HR etc..."
+            },
+            "identificationNumber": {
+              "type": "string",
+              "readOnly": true,
+              "description": "unique id assigned at the time of user creation"
+            },
+            "likesTea": {
+              "type": "string",
+              "description": "Gets or sets the deployment mode.",
+              "enum": [ "Yes" ],
+              "x-ms-enum": {
+                "name": "likesTea",
+                "modelAsString": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "EmployeePatchProperties": {
+      "type": "object",
+      "description": "Employee patch properties",
+      "properties": {
+        "tags": {
+          "description": "resource tags.",
+          "type": "object",
+          "readOnly": false,
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "properties": {
+          "type": "object",
+          "properties": {
+            "group": {
+              "type": "string",
+              "description": "group like Finance, HR etc..."
             }
           }
         }
       }
     }
-  }
   },
   "parameters": {
     "SubscriptionIdParameter": {
